@@ -95,7 +95,7 @@ Marshal.Copy(intPtr, ba, 0, IntPtr.Size);
 byte[] ba = Encoding.Unicode.GetBytes("C:\\windows\\explorer.exe");
 ```
 
-
+***
 
 ### Memory
 
@@ -137,7 +137,7 @@ IntPtr lpValuePointer = Marshal.AllocHGlobal(IntPtr.Size);
 Marshal.WriteIntPtr(lpValuePointer, parentHandle);
 ```
 
-
+***
 
 ### Memory Calculations
 
@@ -159,7 +159,7 @@ int addition = <something>;
 byte[] newBa = BitConverter.GetBytes(BitConverter.ToInt32(oldBa, 0) + addition);
 ```
 
-
+***
 
 ### Process (debugging)
 
@@ -191,7 +191,7 @@ Process proc = Process.GetProcessById(pid);
 proc.Kill();
 ```
 
-
+***
 
 ### Encryption & Decryption
 
@@ -292,7 +292,7 @@ public static byte[] PerformCryptography(byte[] data, ICryptoTransform cryptoTra
 }
 ```
 
-
+***
 
 ### Web
 
@@ -314,11 +314,11 @@ WebClient webclient = new WebClient();
 byte[] downloadData = webclient.DownloadData(urlString);
 ```
 
-
+***
 
 ### DInvoke
 
-
+***
 
 ### MISC
 

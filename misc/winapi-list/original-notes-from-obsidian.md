@@ -4,7 +4,7 @@
 
 Contains most used WinAPI - links, functionality, parameters, returns, interesting remarks, and personal notes
 
-
+***
 
 ### Process Injection Related WINAPI
 
@@ -30,7 +30,7 @@ LPVOID = Memory Pointer = LongPtr
    * Usually `0x40` = RWX
    * But you know, better to alloc --> VMProtect --> Write Mem --> VMProtect --> run (but more on that later)
 
-
+***
 
 **OpenProcess** - Retrieve a handle to a remote process - based on PID
 
@@ -48,7 +48,7 @@ HANDLE OpenProcess(
 
 `dwProcessId` = Target Process's PID
 
-
+***
 
 **VirtualAllocEx** - Allocate memory in a remote process
 
@@ -68,7 +68,7 @@ hProcess = Target process's handle lpAddress = Start address. Usually 0, so Virt
 
 dwSize = Length to allocate. Usually shellcode's length flAllocationType = Type of allocation. Usually MEM\_COMMIT | MEM\_RESERVE = `0x3000` flProtect = Memory protection type. Usually 0x20 (Read) or 0x40 (RWX)
 
-
+***
 
 VirtualProtect - Change memory protection
 
@@ -83,7 +83,7 @@ BOOL VirtualProtect(
 
 lpAddress = `IntPtr` - Page address - Start pointer of the memory address dwSize = `UInt32` - Size of area wish to modify. `1 ~ 0xFFF` is same. Usually `3`. flNewProtect = `UInt32` - Memory protection constant. RWX = `0x40`, RX = `0x20` lpflOldProtect = `[ref] UInt32` = Current memory protection
 
-
+***
 
 **WriteProcessMemory** - Write to a region of a memory in a remote process
 
@@ -102,7 +102,7 @@ hProcess = Handle to target process lpBaseAddress = Starting address to write me
 * Usually used with `out` keyword from C#
 * Pass by reference, not value - because it's a pointer that will hold data copied.
 
-
+***
 
 **CreateRemoteThread**
 
@@ -120,7 +120,7 @@ HANDLE CreateRemoteThread(
 
 hProcess = Handle to the target process lpThreadAttributes = Thread attribute. Usually 0, unless PPID spoofing... but that's another story. dwStackSize = Usually 0 lpStartAddress = Start address of the thread. Usually `alloc` from `VirtualAllocEx`. This is where the shellcode starts. lpParameter = Pointer to variables if parameter. Since shellcodes usually don't have parameters, usually 0. dwCreationFlags = Usually IntPtr.Zero lpThreadId = Usually 0.
 
-
+***
 
 **ReadProcessMemory** = Read memory from remote process
 
@@ -144,7 +144,7 @@ IntPtr nRead = IntPtr.Zero;
 ReadProcessMemory(hProcess, ptrToImageBaseAddress, addrBuf, addrBuf.Length, out nRead);
 ```
 
-
+***
 
 **CreateProcessW** - Create a Process
 
@@ -174,7 +174,7 @@ PROCESS_INFORMATION pi = new PROCESS_INFORMATION();
 bool result = CreateProcess(null, @"C:\windows\system32\svchost.exe", IntPtr.Zero, IntPtr.Zero, false, 0x4, IntPtr.Zero, null, ref si, out pi); 
 ```
 
-
+***
 
 **ZwQueryInformationProcess** - Return PEB information inside a PI (Process Information) variable
 
@@ -205,7 +205,7 @@ ZwQueryInformationProcess(hProcess, 0, ref bi, (uint)(IntPtr.Size*6), ref tmp);
 IntPtr ptrToImageBase = (IntPtr)((Int64)bi.PebAddress + 0x10); 
 ```
 
-
+***
 
 **GetCurrentProcess** - Return current process's handle
 
@@ -214,7 +214,7 @@ IntPtr ptrToImageBase = (IntPtr)((Int64)bi.PebAddress + 0x10);
 static extern IntPtr GetCurrentProcess();
 ```
 
-
+***
 
 ### Token Related WINAPI
 
@@ -235,7 +235,7 @@ HANDLE CreateNamedPipeA(
 
 lpName = `string` = Name of the pipe (ex. `\\.\pipe\pipe_name`) dwOpenMode = `uint` = Mode of the pipe = Mostly `3` = `PIPE_ACCESES_DUPLEX` dwPipeMode = `uint` = Mode of the pipe operation = `PIPE_TYPE_BYTE|PIPE_WAIT`, Usually `0`. nMaxInstances = `uint` = Maximum number of instances of the pipe. Anything 1\~255. nOutBufferSize = `uint` = Number of bytes to use for input/output buffer. Usually `0x1000` bytes. nInBufferSize = `uint` = Number of bytes to use for input/output buffer. Usually `0x1000` bytes. nDefaultTimeout = `uint` = Default timeout. Usually 0. lpSecurityAttributes = `IntPtr` = SID of clients that can interact with the pipe. Usually `NULL/IntPtr.Zero`, because we want any clients to connect to our dummy pipe server.
 
-
+***
 
 `ConnectNamedPipe` - Connect to a named pipe
 
@@ -248,7 +248,7 @@ BOOL ConnectNamedPipe(
 
 hNamedPipe = `IntPTr` =Handle to the named pipe to connect to lpOverlapped = `IntPtr` = Pointer to a structure for advnaced cases. Usually `IntPtr.Zero/Null` for us.
 
-
+***
 
 `ImpersonateNamedPipeClient` - Impersonate the access token of the pipe client that connected to our pipe server. Stolen token will be assigned to the current thread of the process.
 
@@ -260,7 +260,7 @@ BOOL ImpersonateNamedPipeClient(
 
 hNamedPipe = `IntPtr` = Handle to the named pipe (server).
 
-
+***
 
 `OpenThreadToken` - Open thread's token. Used for confirmation that impersonation was successful.
 
@@ -275,7 +275,7 @@ BOOL OpenThreadToken(
 
 ThreadHandle = `IntPtr` = Handle to the thread to check its token. In this case, we want to check our thread from our process. So just use `GetCurrentThread`. DesiredAccess = `uint` = Desired Access to the thread. Usually `TOKEN_ALL_ACCESS` = `0xF01FF` OpenAsSelf = `bool` = Should API use security context of current process? Usually `false/no`, because we are using the impersonated token of the target process. TokenHandle = `IntPtr hToken; out hToken` = (Out) pointer that will be populated with a handle to the token that is opened.
 
-
+***
 
 `GetTokenInformation` - Return token information from the token handle. One of those "Call twice" weird API.
 
@@ -309,7 +309,7 @@ IntPtr TokenInformation = Marshal.AllocHGlobal((IntPtr)TokenInfLength);
 GetTokenInformation(hToken, 1, TokenInformation, TokenInfLength, out TokenInfLength);
 ```
 
-
+***
 
 `ConvertSidToStringSid` - Convert binary SID to string SID
 

@@ -14,6 +14,7 @@
 * [HTTPS 리다이렉터](infrastructure/https-redirector.md)
 * [SMTP Gophish (Digital Ocean + Postfix )](infrastructure/smtp-do/README.md)
 * [SMTP GoPhish (AWS + ZOHO)](infrastructure/smtp-aws-zoho.md)
+* [피싱 인프라](infrastructure/undefined.md)
 * [인프라 구축 자동화](infrastructure/infra-automation/README.md)
   * [테라폼 (Terraform)](infrastructure/infra-automation/terraform.md)
   * [SMTP 테라폼 자동화](infrastructure/infra-automation/mail-terraform.md)
