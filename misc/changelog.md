@@ -71,3 +71,9 @@
 7/3 - [후속 공격의 진화](https://www.xn--hy1b43d247a.com/post-exploitation/evolution-of-postex) 페이지 추가&#x20;
 
 7/9 - [타겟 발견](../initial-recon/target-discovery.md)페이지 추가&#x20;
+
+8/22 - [dns](../basic-concepts/dns/ "mention") 페이지 추가 - [@nanentp](ttps://github.com/nanentp)
+
+### 2024
+
+1/2 - [smtp-toolkit-relay-esp.md](../infrastructure/smtp-toolkit-relay-esp.md "mention")페이지 추가&#x20;
