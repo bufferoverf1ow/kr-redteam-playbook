@@ -319,8 +319,34 @@ Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Par
 Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters' -name "NullSessionPipes" -value "*" -Type String
 Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters' -name "NullSessionShares" -value "*" -Type String
 
+# Right click on share -> Properties 
+- "Security" > Add Everyone and add all permissions
+- "Sharing" > Advanced Sharing > permissions > Add Everyone and all permissions
+
 # Test it, or use cme 
 net use \\servername\sharename "" /user:""
+```
+
+Guest/Anonymous access on shares ver.2&#x20;
+
+```
+# Allow anonymous on Windows 10
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters" -Name "AllowInsecureGuestAuth" -Value 1 -Type DWord
+
+# Activate guest account
+net user guest /active:yes
+
+# Ensure directory structure for SMB share exists
+New-Item -Path "C:\" -ItemType Directory -Force
+
+# Add Everyone full control to the directory
+$acl = Get-Acl -Path "C:\"
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("Everyone", "FullControl", "ContainerInherit, ObjectInherit", "None", "Allow")
+$acl.SetAccessRule($accessRule)
+Set-Acl -Path "C:\" -AclObject $acl
+
+# Create SMB share
+New-SmbShare -Name "C" -Path "C:\" -FullAccess "Everyone" -Description "Entier C Filesystem"
 ```
 
 Remove History
