@@ -43,6 +43,8 @@ www.safe.com  canonical name = safe.com.global.prod.fastly.net.
 
 ## 실습 - 세팅
 
+> 01/30/2024: Fastly가 드디어 도메인 프론팅을 중단하기로 결정했다. 따라서 2024년 2월 이후에 이 글을 보시는 분들은 아래의 실습을 진행하지 마시길 바란다 ([https://lists.torproject.org/pipermail/anti-censorship-team/2023-October/000328.html](https://lists.torproject.org/pipermail/anti-censorship-team/2023-October/000328.html)).&#x20;
+
 이렇게 설명해도 복잡하긴 마련이다. 일단 실습을 진행한다.
 
 **시나리오: 공격자는 피싱을 통해 IT 회사의 직원 중 한명의 컴퓨터를 장악했다. 이제, 공격자의 C2 서버로 콜백을 진행해야한다.**
