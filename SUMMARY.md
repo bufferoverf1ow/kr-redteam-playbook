@@ -35,7 +35,7 @@
   * [자산 정보 수집](initial-recon/osint/asset-discovery.md)
   * [구글 도킹](initial-recon/osint/google-dorking.md)
 
-## ⚔ 초기 침투 (Initial Access)
+## ⚔️ 초기 침투 (Initial Access)
 
 * [개념](initial-access/concepts.md)
 * [피싱 첨부파일](initial-access/phish-attachments/README.md)
@@ -83,7 +83,7 @@
 * [DLL Search Order Hijacking - TODO](persistence/dll-hijacking.md)
 * [레지스트리 / 스타트업 폴더](persistence/registry-startup-folder.md)
 
-## ⬆ 권한 상승 <a href="#privilege-escalation" id="privilege-escalation"></a>
+## ⬆️ 권한 상승 <a href="#privilege-escalation" id="privilege-escalation"></a>
 
 * [개념](privilege-escalation/concepts.md)
 * [AD 권한 상승](privilege-escalation/ad/README.md)
@@ -161,7 +161,7 @@
 * [DCSync](credential-access/dcsync.md)
 * [DPAPI](credential-access/dpapi.md)
 
-## ↔ 횡적 이동 (Lateral Movement)
+## ↔️ 횡적 이동 (Lateral Movement)
 
 * [개념](lateral-movement/concepts.md)
 * [Pass-the-Hash](lateral-movement/pass-the-hash.md)
@@ -194,7 +194,7 @@
 
 * [개념](real-attack-ttp-and-mitigations/concepts.md)
 
-## 🧑🔬 🧑🔬 🧑🔬 🧑🔬 🧑🔬 🧑🔬 🧑🔬 🧑🔬 홈 랩 (Home lab) <a href="#homelab" id="homelab"></a>
+## 🧑‍🔬 🧑🔬 🧑🔬 🧑🔬 🧑🔬 🧑🔬 🧑🔬 🧑🔬 홈 랩 (Home lab) <a href="#homelab" id="homelab"></a>
 
 * [시스몬 (sysmon) 설치](homelab/installing-sysmon.md)
 * [SIEM과 EDR 솔루션 설치](homelab/edr.md)
