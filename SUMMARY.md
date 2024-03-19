@@ -2,7 +2,7 @@
 
 * [레드팀 플레이북](README.md)
 * [레드팀이란](what-even-is-redteam.md)
-* [레드팀 글로벌 동향 (2024)(](2024.md)
+* [레드팀 글로벌 동향 (2024)](redteam-global-trend-2024.md)
 
 ## 🚧 인프라 (Infrastructure)
 
