@@ -79,3 +79,5 @@
 1/2 - [smtp-toolkit-relay-esp.md](../infrastructure/smtp-toolkit-relay-esp.md "mention")페이지 추가&#x20;
 
 3/2 - [dll-sideloading.md](../persistence/dll-sideloading.md "mention") 페이지 컨텐츠 추가&#x20;
+
+3/19 - [redteam-global-trend-2024.md](../redteam-global-trend-2024.md "mention")페이지 추가&#x20;
