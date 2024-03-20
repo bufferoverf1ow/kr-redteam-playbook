@@ -69,7 +69,7 @@ TIBER-EU는 위협 인텔리전스 기반 윤리적 레드팀 운용 프레임�
 
 1. 2021년 4월 - 바이든 행정부의 `국가 사이버 보안 개선에 관한 행정 명령` - [링크](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/)
 
-솔라윈즈 해킹, 익스체인지 사태, 콜로니얼 파이프라인 해킹 등 대형 사건 사고들을 겪으며 백악관에서 행정 명령이 나올 정도로 미국에서는 사이버 보안과 관련된 관심이 높아졌다. 공격자들이 단순히 웹/앱 취약점을 몇 개 찾은 정도가 아니라, 대규모 사이버 공격 및 OT 인프라가 마비될 정도의 고도화된 공격을 진행했기 때문에 레드팀 서비스를 통해 이를 시뮬레이션하고 탐지/대응 하려는 노력들 또한 많아졌다. 이와 관련한 국내 기사는 다음의 링크를 참고한다 - [링크](https://m.boannews.com/html/detail.html?idx=97506\&page=2\&mkind=1\&kind=1)
+솔라윈즈 해킹, 익스체인지 사태, 콜로니얼 파이프라인 해킹 등 대형 사건 사고들을 겪으며 백악관에서 행정 명령이 나올 정도로 미국에서는 사이버 보안과 관련된 관심이 높아졌다. 대규모 사이버 공격 및 OT 인프라가 마비될 정도의 고도화된 공격을 받았기 때문에 레드팀 서비스를 통해 이를 시뮬레이션 하고 탐지 및 대응 하려는 노력들도 많아지고 있다. 이와 관련한 국내 기사는 다음의 링크를 참고한다 - [링크](https://m.boannews.com/html/detail.html?idx=97506\&page=2\&mkind=1\&kind=1)
 
 2. 2023년 7월 - 미국 증권거래위원회의 사이버 공격 4일 공시 의무화 - [링크](https://www.sec.gov/rules/2022/03/cybersecurity-risk-management-strategy-governance-and-incident-disclosure#33-11216)
 
@@ -89,7 +89,7 @@ TIBER-EU에서는 금융 기관들의 IT 환경이 얼마나 많이 변화되고
 
 > 모의해킹은 단일 고립된 시스템이나 환경에서 기술적, 환경적 취약점에 대한 상세하고 유용한 평가를 제공한다. 하지만, 모의해킹은 기관 전체(사람, 프로세스, 기술)에 대한 표적 공격의 전체 시나리오를 평가하지 않는다.   ("Penetration tests have provided a detailed and useful assessment of technical and configuration vulnerabilities, often within isolation of a single system or environment. However, they do not assess the full scenario of a targeted attack against an entire entity (including the complete scope of its people, processes and technologies.")
 
-레드팀이란 무엇인가 글에서도 잠깐 언급했지만, 모의해킹은 고립되고 지엽적인 시스템이나 환경의 취약점을 알아내는데 특화된 서비스다. 하지만 실제 공격자들의 공격은 특정 도메인, 특정 시스템들"만" 공격하지 않는다. 실제 공격자들은 타겟의 모든 자산을 유기적으로 넘나드며 공격을 진행한다. 따라서 모의해킹이 평가하지 못하는 부분 - 타겟 전체에 대한 표적 공격 - 을 커버하기 위해 레드팀 서비스를 받아야한다는 것을 강조하고 있다.
+[레드팀이란?](what-even-is-redteam.md) 글에서도 잠깐 언급했지만 모의해킹은 고립되고 지엽적인 시스템이나 환경의 취약점을 알아내는데 특화된 서비스다. 하지만 실제 공격자들의 공격은 특정 도메인, 특정 시스템들"만" 공격하지 않는다. 실제 공격자들은 타겟의 모든 자산을 유기적으로 넘나드며 공격을 진행한다. 따라서 모의해킹이 평가하지 못하는 부분 - 타겟 전체에 대한 표적 공격 - 을 커버하기 위해 레드팀 서비스를 받아야한다는 것을 강조하고 있다.
 
 ### DORA Article 26 - 2번
 
@@ -105,26 +105,26 @@ DORA에서 위협 모델링(Threat Modeling)을 간접적으로 언급한 부분
 
 > 금융 기관에 대한 사이버 보안 공격은 범위, 복잡성, 정교함 측면에서 빠르게 진화하고 있다. < . . . > 기관들이 직면한 특별한 위협을 상대로 효율적인 자원 배분을 하기 위해 기관들은 위협 모델링을 통해 가능한 공격자들과 공격 경로들을 식별하고 공격 시뮬레이션 및 시나리오를 제작하는 것이 권장된다. (Cyber security attacks against organisations such as financial institutions (FIs) are evolving rapidly in scope, complexity and sophistication. In order to efficiently allocate their resources to the unique threats they are facing, FIs are encouraged to create scenarios for their attack simulation by identifying the most likely adversaries and the attack vectors through threat modelling.)
 
-그나마 우리나라와 가장 가까운 싱가포르 은행 협회의 AASE 개요 섹션의 한 부분이다. 별 다른 설명이 필요없을만큼 왜 레드팀/공격자 시뮬레이션이 필요한지에 대해 설명하고 있다.
+싱가포르 은행 협회의 AASE 개요 섹션의 한 부분이다. 별 다른 설명이 필요없을만큼 레드팀/공격자 시뮬레이션이 왜필요한지에 대해 설명하고 있다.
 
 이외에도 다양한 방안들을 살펴보고 종합해보면, 다음과 같은 이유 때문에 이런 방안들과 레드팀 서비스가 만들어졌다고 볼 수 있다:
 
-**사이버 공격이 점차 고도화 됨에 따라, 기존의 지엽적인 시스템들을 향한 모의해킹, 취약점/소스코드 분석은 방어자의 전체적인 인력, 프로세스, 기술에 대한 전반적인 평가를 내리는데에 부족함이 있다. 따라서, 타겟 기관의 관리적, 기술적 보안을 담당하는 인력, 대응 절차, 보안 통제, 기술 등의 현황과 부족한 간극을 평가하기 위해 실제 공격자들의 공격 라이프사이클과 전략, 전술, 절차(TTP)를 에뮬레이트 (emulate), 혹은 시뮬레이트 (simulate) 하는 가상의 사이버 공격을 진행하는 레드팀 서비스를 도입할 필요가 있다.**
+**사이버 공격이 점차 고도화 됨에 따라, 기존의 지엽적인 모의해킹 및 취약점/소스코드 분석은 방어자의 전체적인 인력, 프로세스, 기술에 대한 전반적인 평가를 내리는데에 부족함이 있다. 따라서, 기관의 관리적, 기술적 보안을 담당하는 인력, 대응 절차, 보안 통제, 기술 등의 현황과 부족한 간극을 최대한 현실적으로 평가하기 위해 실제 공격자들의 공격 라이프사이클과 전략, 전술, 절차(TTP)를 에뮬레이트 (emulate), 혹은 시뮬레이트 (simulate) 하는 가상의 사이버 공격을 진행하는 레드팀 서비스를 도입할 필요가 있다.**
 
 ## 3. 무엇을? - 레드팀 평가 체계, 프레임워크, 법률의 내용
 
 <figure><img src="https://blog.sunggwanchoi.com/content/images/2024/03/what.png" alt=""><figcaption></figcaption></figure>
 
-금융 기관과 업체는 국가 운영의 핵심 인프라로 간주된다. 이런 기관들은 다양한 APT 그룹들의 타겟이 되곤 한다. 높은 수준의 APT 그룹들의 행동을 시뮬레이트하는 레드팀 서비스는 명확한 방법론, 규칙, 자격, 인증 없이 수행될 경우 심각한 문제를 초래할 수 있다. 따라서 레드팀 평가 체계, 프레임워크, 법률은 프로젝트를 진행하는데 있어 모든 이해관계자가 동일한 용어, 방법론, 활동, 결과물, 상호작용 단계들을 사용할 수 있도록 이를 표준화하고 체계화하는데 중요한 역할을 한다.
+높은 수준의 APT 그룹들의 행동을 시뮬레이트하는 레드팀 서비스는 명확한 방법론, 규칙, 자격, 인증 없이 수행될 경우 심각한 문제를 초래할 수 있다. 따라서 레드팀 평가 체계, 프레임워크, 법률은 프로젝트를 진행하는데 있어 모든 이해관계자가 동일한 용어, 방법론, 활동, 결과물, 상호작용 단계들을 사용할 수 있도록 이를 표준화하고 체계화하는데 중요한 역할을 한다.
 
 TIBER-EU를 예로 들자면, 레드팀과 관련된 다음의 항목들에 대한 표준화를 하고 있다. [TIBER-EU 링크](https://www.ecb.europa.eu/pub/pdf/other/ecb.tiber\_eu\_framework.en.pdf). 아래는 TIBER-EU의 1 페이지 요약이다.
 
 ### 1. 레드팀 프로세스
 
-모든 기관들이 체계화된 레드팀 서비스를 받을 수 있도록 다음과 같이 레드팀 프로세스를 표준화했다.
+모든 기관들이 체계화된 레드팀 서비스를 받을 수 있도록 다음과 같이 표준화했다.
 
-* **준비 단계:** 위협 배경, 프로젝트 스코핑, 위협 인텔리전스 및 레드팀 관련 업체와의 계약
-* **테스트 단계:** 위협 인텔레전스 및 레드티밍
+* **준비 단계:** 위협 배경, 프로젝트 스코핑, 위협 인텔리전스 및 서비스 제공자와의 계약
+* **테스트 단계:** 위협 인텔레전스 및 레드팀 서비스 실행
 * **마무리 단계:** 대응 방안 마련 및 결과 공유
 
 이와 관련된 세부 사항은 섹션 4.2 Process Overview를 참고한다.
