@@ -28,6 +28,22 @@ Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Services\NTDS\Parameters"
 LDAP Anonymous Bind Enabled
 
 ```
+
+# Powershell 
+$directoryServicesDN = "CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration," + (Get-ADDomain).DistinguishedName
+
+$currentValue = (Get-ADObject -Identity $directoryServicesDN -Properties "dSHeuristics").dSHeuristics
+if ($currentValue -ne "0000002") {
+    Set-ADObject -Identity $directoryServicesDN -Replace @{dSHeuristics="0000002"}
+    Write-Output "dSHeuristics updated successfully."
+} else {
+    Write-Output "dSHeuristics is already set to the desired value."
+}
+
+$domainDN = (Get-ADDomain).DistinguishedName
+& dsacls "CN=Users,$domainDN" /G 'ANONYMOUS LOGON:GR'
+
+# --------- GUI -----------
 # ADSI and dSHeurstics setting 
 ADSI Edit > Connection Settings + Select A Well known Naming Context "Configuration > 
 CN=Services > CN=Windos NT > CN=Directory Services > Properties > dSHeuristics set to 0000002 (seven zeros)
@@ -35,7 +51,7 @@ CN=Services > CN=Windos NT > CN=Directory Services > Properties > dSHeuristics s
 # Anonymous Logon READ permission on Users Container  
 ADUC > Advanced > Users Container > Properties > Permissions > Add > Anonymous Logon > "READ" permission
 
-# Validate the Poggers 
+# ------- DEBUG --------
 crackmapexec ldap <Dc> -u '' -p '' --users
 ```
 
