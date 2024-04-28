@@ -394,3 +394,34 @@ FQDN and the instance name.
 
 ```
 
+Remote Desktop Service for Windows Server machines&#x20;
+
+```
+Get-WindowsFeature -Name RDS-RD-Server | Select-Object -ExpandProperty Installed
+Install-WindowsFeature -Name RDS-RD-Server -IncludeManagementTools
+restart-computer -force 
+(Get-WmiObject -class Win32_TSGeneralSetting -Namespace root\cimv2\terminalservices -Filter "TerminalName='RDP-tcp'").SetUserAuthenticationRequired(0)
+
+# Scheduled Task to reset RDS 120 days trial 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+$folderPath = 'C:\scripts'
+if (-not (Test-Path $folderPath)) { New-Item -Path $folderPath -ItemType Directory }
+Invoke-WebRequest 'https://raw.githubusercontent.com/pbv7/reset-rds-grace-period/main/reset-rds-grace-period.ps1' -OutFile "$folderPath\reset-rds-grace-period.ps1"
+$Action = New-ScheduledTaskAction -Execute 'PowerShell.exe' -Argument "-NoProfile -File '$folderPath\reset-rds-grace-period.ps1' -Force -RestartTS"
+$Trigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday -At 9am
+Register-ScheduledTask -TaskName 'ResetRDSGracePeriod' -Action $Action -Trigger $Trigger -RunLevel Highest
+```
+
+RDPWrap for Win10/Win11 client machines&#x20;
+
+```
+https://woshub.com/how-to-allow-multiple-rdp-sessions-in-windows-10/
+
+invoke-webrequest -uri "https://github.com/stascorp/rdpwrap/releases/download/v1.6.2/RDPWrap-v1.6.2.zip" -outfile "C:\rdpwrap.zip"
+Expand-archive -path "C:\rdpwrap.zip" -destinationpath "C:\rdpwrap"
+start-process cmd.exe "/c c:\rdpwrap\install.bat" -Wait -NoNewWindow
+Stop-Service termservice -Force
+Invoke-WebRequest https://raw.githubusercontent.com/sebaxakerhtc/rdpwrap.ini/master/rdpwrap.ini -outfile "C:\Program Files\RDP Wrapper\rdpwrap.ini"
+restart-computer -force 
+```
+
